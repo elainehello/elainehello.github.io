@@ -1,6 +1,6 @@
 .desktop-shell {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 40px);
 
   background-color: #008080;
 

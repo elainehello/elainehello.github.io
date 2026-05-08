@@ -10,9 +10,10 @@ function DesktopIcons() {
         gap: '1rem'
       }}
     >
-      <DesktopIcon label="About Me" />
-      <DesktopIcon label="Projects" />
-      <DesktopIcon label="Terminal" />
+      <DesktopIcon appId="about" />
+      <DesktopIcon appId="projects" />
+      <DesktopIcon appId="terminal" />
+      <DesktopIcon appId="explorer" />
     </div>
   );
 }

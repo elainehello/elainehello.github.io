@@ -1,10 +1,26 @@
+import { useWindowManager } from '../../hooks/useWindowManager';
+import { launchApplication } from '../../../system/services/applicationService';
+import { appRegistry, type AppDefinition } from '../../state/appRegistry';
+
 interface Props {
-  label: string;
+  appId: string;
 }
 
-function DesktopIcon({ label }: Props) {
+function DesktopIcon({ appId }: Props) {
+  const { dispatch } = useWindowManager();
+
+  const app: AppDefinition = appRegistry[appId];
+
+  const handleClick = () => {
+    const action = launchApplication(appId);
+    if (action) {
+      dispatch(action);
+    }
+  };
+
   return (
     <button
+      onClick={handleClick}
       style={{
         width: 80,
         background: 'transparent',
@@ -16,9 +32,9 @@ function DesktopIcon({ label }: Props) {
         cursor: 'pointer'
       }}
     >
-      <span style={{ fontSize: 32 }}>🖥️</span>
+      <span style={{ fontSize: 32 }}>{app.icon}</span>
 
-      <span>{label}</span>
+      <span>{app.title}</span>
     </button>
   );
 }

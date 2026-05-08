@@ -1,11 +1,22 @@
-import WindowFrame from '../../app/components/window/WindowFrame';
+import WindowContainer from './WindowContainer';
+
+import { useWindowManager } from '../../app/hooks/useWindowManager';
+import { type WindowInstance } from './windowTypes';
 
 function WindowManager() {
-  return (
-    <WindowFrame title="Welcome">
-      <p>React95 desktop environment initialized.</p>
-    </WindowFrame>
-  );
+    const { state } = useWindowManager();
+
+    return (
+        <>
+            {state.windows.map((window: WindowInstance) => (
+                <WindowContainer
+                    key={window.id}
+                    window={window}
+                    isActive={window.id === state.activeWindowId}
+                />
+            ))}
+        </>
+    );
 }
 
 export default WindowManager;

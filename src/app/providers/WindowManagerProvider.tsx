@@ -6,7 +6,8 @@ import { type WindowState } from '../../system/window-manager/windowTypes';
 
 const initialState: WindowState = {
     windows: [],
-    activeWindowId: null
+    activeWindowId: null,
+    nextZIndex: 1
 };
 
 interface Props {
